@@ -1,7 +1,9 @@
-My neovim config :) 
+My neovim config using lazyvim :) 
 
-You can copy it by using 
+You can try it by: 
 
-`git clone https://github.com/kebiBGit/neovim-lazyvim.git`
+```bash
+mv ~/.config/nvim ~/.config/nvim-backup
 
-
+git clone https://github.com/kebiBGit/neovim-lazyvim.git ~/.config/nvim
+```
