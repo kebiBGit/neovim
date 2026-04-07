@@ -1,4 +1,4 @@
-My neovim config using lazyvim :) 
+My neovim config using vim.pack :) 
 
 You can try it by: 
 
