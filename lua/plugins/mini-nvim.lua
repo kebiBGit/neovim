@@ -3,8 +3,6 @@ vim.pack.add({
 })
 
 --mini.indentscope
-
-init = function()
   vim.api.nvim_create_autocmd("FileType", {
     pattern = {
       "help",
@@ -23,7 +21,6 @@ init = function()
       vim.b.miniindentscope_disable = true
     end,
   })
-end
 require('mini.indentscope').setup(
 {
   draw = {
@@ -118,3 +115,7 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 vim.keymap.set("n", "<leader>e", ":lua MiniFiles.open()<CR>")
+
+--mini.ai
+
+require('mini.ai').setup()
