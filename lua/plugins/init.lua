@@ -1,14 +1,11 @@
-local plugins_dir = vim.fs.joinpath(vim.fn.stdpath("config"), "lua", "plugins")
-local plugin_modules = {}
+local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
 
-for name, kind in vim.fs.dir(plugins_dir) do
-	if kind == "file" and name:sub(-4) == ".lua" and name ~= "init.lua" then
-		table.insert(plugin_modules, "plugins." .. name:sub(1, -5))
-	end
-end
-
-table.sort(plugin_modules)
-
-for _, module_name in ipairs(plugin_modules) do
-	require(module_name)
+for _, file in ipairs(vim.fn.glob(plugin_dir .. "/*.lua", false, true)) do
+  local name = vim.fn.fnamemodify(file, ":t:r")
+  if name ~= "init" then
+    local ok, err = pcall(require, "plugins." .. name)
+    if not ok then
+      vim.notify("Failed to load plugin config: plugins." .. name .. "\n" .. err, vim.log.levels.ERROR)
+    end
+  end
 end
