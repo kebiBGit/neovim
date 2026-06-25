@@ -5,7 +5,7 @@ vim.opt.shiftwidth=2
 vim.g.mapleader = " "
 vim.g.background = "dark"
 
-vim.opt.swapfile = false
+vim.opt.swapfile = true
 
 -- Navigate vim panes better
 --vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
@@ -24,6 +24,7 @@ vim.opt.smartcase = true
 vim.o.autoindent = true
 vim.opt.termguicolors = true
 vim.opt.linebreak = true
+vim.opt.signcolumn = "yes:1"
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({ timeout = 300 })  -- highlight for 200ms
