@@ -5,6 +5,7 @@ vim.loader.enable()
 require('options')
 require('theme')
 require('plugins')
+require('obsidian')
 
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
