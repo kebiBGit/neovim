@@ -1,7 +1,7 @@
 vim.pack.add({
   "https://github.com/nvim-telescope/telescope-ui-select.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
-  "https://github.com/nvim-lua/plenary.nvim" ,
+  "https://github.com/nvim-lua/plenary.nvim",
 })
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
@@ -18,6 +18,14 @@ end
 
 telescope.setup({
   defaults = {
+    file_ignore_patterns = {
+      "^venv/",
+      "**/venv/*",
+      "^.venv/",
+      "^env/",
+      "__pycache__/",
+      "%.pyc$",
+    },
     mappings = {
       i = {
         ["<C-h>"] = function(prompt_bufnr)
