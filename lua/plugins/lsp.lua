@@ -3,6 +3,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
+  { src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{
@@ -15,10 +16,18 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-tool-installer").setup({
 	ensure_installed = {
+		-- LSPs
 		"lua_ls",
-		"stylua",
+		"ts_ls",
+		"eslint",
 		"pylsp",
+    -- "ruff",
 		"clangd",
+    "bashls",
+
+		-- Formatters
+		"stylua",
+		"prettier",
 	},
 })
 
@@ -41,6 +50,31 @@ vim.lsp.config("lua_ls", {
 				enable = false,
 			},
 		},
+	},
+})
+
+vim.lsp.config("eslint", {
+	settings = {
+		workingDirectories = {
+			mode = "auto",
+		},
+	},
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+
+		javascript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescript = { "prettier" },
+		typescriptreact = { "prettier" },
+
+		json = { "prettier" },
+		jsonc = { "prettier" },
+		css = { "prettier" },
+		html = { "prettier" },
+		markdown = { "prettier" },
 	},
 })
 
@@ -77,8 +111,15 @@ vim.keymap.set("n", "K", function()
 end, { desc = "Hover" })
 
 vim.keymap.set("n", "<leader>fa", function()
-	vim.lsp.buf.format({ async = true })
+	require("conform").format({
+		async = true,
+		lsp_fallback = true,
+	})
 end, { desc = "Format" })
+
+-- vim.keymap.set("n", "<leader>fa", function()
+-- 	vim.lsp.buf.format({ async = true })
+-- end, { desc = "Format" })
 
 -- "gri" is mapped to |vim.lsp.buf.implementation()|
 -- "grn" is mapped to |vim.lsp.buf.rename()|
