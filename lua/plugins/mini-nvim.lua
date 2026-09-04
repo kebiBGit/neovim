@@ -123,7 +123,7 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
-vim.keymap.set("n", "<leader>e", ":lua MiniFiles.open()<CR>")
+vim.keymap.set("n", "<leader>e", ":lua MiniFiles.open()<CR>", { silent = true })
 
 --mini.ai
 
