@@ -45,6 +45,7 @@ vim.keymap.set("n", "<leader>term", ":tab term<CR>")
 vim.keymap.set("n", "<leader>bp", ":bp<CR>")
 vim.keymap.set("n", "<leader>bn", ":bn<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+vim.keymap.set("n", "<leader>bl", "<C-^>")
 
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
