@@ -6,10 +6,10 @@ require("bufferline").setup({
 	options = {
 		-- Appearance options go here
 		themable = true,
-    indicator = {
-      icon = "▋", -- The character to use as indicator
-      style = "icon" -- Can be "icon", "underline", or "none"
-    },
+		indicator = {
+			icon = "▋", -- The character to use as indicator
+			style = "icon", -- Can be "icon", "underline", or "none"
+		},
 		mode = "buffers",
 		modified_icon = "●",
 		buffer_close_icon = "󰅖",
@@ -30,4 +30,4 @@ require("bufferline").setup({
 		},
 	},
 })
-vim.keymap.set("n", "<leader>bl", ":BufferLinePick<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>bf", ":BufferLinePick<CR>", { noremap = true, silent = true })

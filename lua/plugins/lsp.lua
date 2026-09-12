@@ -3,7 +3,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
-  { src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{
@@ -21,9 +21,9 @@ require("mason-tool-installer").setup({
 		"ts_ls",
 		"eslint",
 		"pylsp",
-    -- "ruff",
+		-- "ruff",
 		"clangd",
-    "bashls",
+		"bashls",
 
 		-- Formatters
 		"stylua",
@@ -59,6 +59,10 @@ vim.lsp.config("eslint", {
 			mode = "auto",
 		},
 	},
+})
+
+vim.lsp.config("bashls", {
+	filetypes = { "bash", "sh", "zsh" },
 })
 
 require("conform").setup({
@@ -116,6 +120,15 @@ vim.keymap.set("n", "<leader>fa", function()
 		lsp_fallback = true,
 	})
 end, { desc = "Format" })
+
+vim.lsp.enable({
+	"lua_ls",
+	"ts_ls",
+	"eslint",
+	"pylsp",
+	"clangd",
+	"bashls",
+})
 
 -- vim.keymap.set("n", "<leader>fa", function()
 -- 	vim.lsp.buf.format({ async = true })
