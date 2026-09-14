@@ -34,6 +34,7 @@ local parsers = {
 	"regex",
 	"javascript",
 	"typescript",
+	"tsx",
 	"json",
 	"html",
 	"css",
@@ -44,8 +45,9 @@ local parsers = {
 
 require("nvim-treesitter").install(parsers)
 
+local file_pattern = vim.list_extend(parsers, { "javascriptreact", "typescriptreact", "sh", "help", "checkhealth" })
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = parsers,
+	pattern = file_pattern,
 	callback = function()
 		vim.treesitter.start() -- highlighting
 		-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- folds
